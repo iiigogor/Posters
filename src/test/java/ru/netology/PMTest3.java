@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PosterManagerTest {
+public class PMTest3 {
     private PosterManager manager = new PosterManager();
     private Film first = new Film(1, "pict1", "AAA", "XXX");
     private Film second = new Film(2, "pict2", "BBB", "ZZZ");
@@ -17,7 +17,7 @@ class PosterManagerTest {
     private Film eighth = new Film(8, "pict8", "NNN", "YYY");
     private Film ninth = new Film(9, "pict9", "VVV", "XXX");
     private Film tenth = new Film(10, "pict10", "WWW", "YYY");
-    private Film eleventh = new Film(11, "pict11", "MMM", "ZZZ");
+
 
     @BeforeEach
     public void setUp() {
@@ -30,23 +30,15 @@ class PosterManagerTest {
         manager.add(seventh);
         manager.add(eighth);
         manager.add(ninth);
-        manager.add(tenth);
 
     }
-
     @Test
-    void addUpTen() {
-        manager.add(eleventh);
-        Film[] actual = manager.lastFilm(10);
+
+    void addTenth() {
+        manager.add(tenth);
+        Film[] actual = manager.getAll();
         Film[] expected = new Film[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    void deleteFilmTen() {
-        manager.deleteFilm(10);
-        Film[] actual = manager.getAll();
-        Film[] expected = new Film[]{ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
-        assertArrayEquals(expected, actual);
-    }
 }
